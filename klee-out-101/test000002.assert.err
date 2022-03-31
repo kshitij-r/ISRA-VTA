@@ -1,0 +1,7 @@
+Error: ASSERTION FAIL: acc_mem_ref[i] == acc_mem_gemm[i]
+File: gemm.cpp
+Line: 163
+assembly.ll line: 993
+State: 1
+Stack: 
+	#000000993 in main (=1, =94493641221760) at gemm.cpp:163

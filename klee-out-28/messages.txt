@@ -1,0 +1,3 @@
+KLEE: Using STP solver backend
+KLEE: ERROR: store_debug.cc:23: failed external call: _ZNSolsEPFRSoS_E
+KLEE: NOTE: now ignoring this error at this location

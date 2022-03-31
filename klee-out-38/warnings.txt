@@ -1,0 +1,12 @@
+KLEE: WARNING: undefined reference to function: _ZNSt8ios_base4InitC1Ev
+KLEE: WARNING: undefined reference to function: _ZNSt8ios_base4InitD1Ev
+KLEE: WARNING: undefined reference to function: _ZSt9terminatev
+KLEE: WARNING: undefined reference to function: __cxa_begin_catch
+KLEE: WARNING: undefined reference to function: __gxx_personality_v0
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING ONCE: calling external: _ZNSt8ios_base4InitC1Ev(94399351076272) at /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/iostream:74 25
+KLEE: WARNING ONCE: Alignment of memory from call "realloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 94399362664224) at klee_src/runtime/POSIX/fd.c:1007 10
+KLEE: WARNING ONCE: Alignment of memory from call "malloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling __klee_posix_wrapped_main with extra arguments.
+KLEE: WARNING ONCE: calling external: _ZNSt8ios_base4InitD1Ev(94399351076272) at libc/stdlib/_atexit.c:295 25

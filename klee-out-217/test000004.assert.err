@@ -1,0 +1,7 @@
+Error: ASSERTION FAIL: DRAM_3[k] != DRAM_5[k]
+File: autogen_testharness.cpp
+Line: 174
+assembly.ll line: 7595
+State: 1
+Stack: 
+	#000007595 in main (=1, =93867547027072) at autogen_testharness.cpp:174

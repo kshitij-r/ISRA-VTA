@@ -1,0 +1,10 @@
+KLEE: WARNING: undefined reference to function: _ZNSt8ios_base4InitC1Ev
+KLEE: WARNING: undefined reference to function: _ZNSt8ios_base4InitD1Ev
+KLEE: WARNING: undefined reference to function: _ZSt9terminatev
+KLEE: WARNING: undefined reference to function: __cxa_atexit
+KLEE: WARNING: undefined reference to function: __cxa_begin_catch
+KLEE: WARNING: undefined reference to function: __gxx_personality_v0
+KLEE: WARNING: undefined reference to function: fprintf
+KLEE: WARNING: undefined reference to variable: stderr
+KLEE: WARNING ONCE: calling external: _ZNSt8ios_base4InitC1Ev(93864904061096) at /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/iostream:74 25
+KLEE: WARNING ONCE: calling external: __cxa_atexit(93864904058432, 93864904061096, 93864904061272) at /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/iostream:74 25

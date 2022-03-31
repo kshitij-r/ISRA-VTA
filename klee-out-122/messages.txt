@@ -1,0 +1,3 @@
+KLEE: Using STP solver backend
+KLEE: ERROR: gemm.cpp:153: ASSERTION FAIL: acc_mem_gemm[i] == acc_mem_ref[i]
+KLEE: NOTE: now ignoring this error at this location

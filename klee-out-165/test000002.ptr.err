@@ -1,0 +1,11 @@
+Error: memory error: out of bound pointer
+File: gemm.cpp
+Line: 177
+assembly.ll line: 1205
+State: 1
+Stack: 
+	#000001205 in main (argc=1, argv=94185296725632) at gemm.cpp:177
+Info: 
+	address: 94185297974720
+	next: object at 22589699509056 of size 1536
+		MO68[1536] (no allocation info)

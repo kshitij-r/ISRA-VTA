@@ -1,0 +1,27 @@
+array dram_base[4] : w32 -> w8 = symbolic
+array insn_addr[4] : w32 -> w8 = symbolic
+array insn_count[4] : w32 -> w8 = symbolic
+array model_version[4] : w32 -> w8 = symbolic
+array sram_base[4] : w32 -> w8 = symbolic
+array x_size[4] : w32 -> w8 = symbolic
+array x_stride[4] : w32 -> w8 = symbolic
+array y_size[4] : w32 -> w8 = symbolic
+(query [(Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq 0
+             (ReadLSB w32 0 sram_base))
+         (Eq 0
+             (ReadLSB w32 0 dram_base))
+         (Eq 1
+             (ReadLSB w32 0 y_size))
+         (Eq 8
+             (ReadLSB w32 0 x_size))
+         (Eq 8
+             (ReadLSB w32 0 x_stride))
+         (Eq 1
+             (ReadLSB w32 0 insn_count))
+         (Ule 0
+              N0:(ReadLSB w32 0 insn_addr))
+         (Ule N0 591)
+         (Eq 0 (URem w32 N0 16))]
+        false)

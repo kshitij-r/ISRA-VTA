@@ -1,0 +1,23 @@
+klee --libc=uclibc --posix-runtime isa_uarch.bc --version
+PID: 10644
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2021-08-03 16:56:49
+BEGIN searcher description
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+END searcher description
+Finished: 2021-08-03 16:59:19
+Elapsed: 00:02:30
+KLEE: done: explored paths = 7
+KLEE: done: avg. constructs per query = 131
+KLEE: done: total queries = 12670
+KLEE: done: valid queries = 12660
+KLEE: done: invalid queries = 10
+KLEE: done: query cex = 12670
+
+KLEE: done: total instructions = 18255194
+KLEE: done: completed paths = 6
+KLEE: done: partially completed paths = 1
+KLEE: done: generated tests = 7

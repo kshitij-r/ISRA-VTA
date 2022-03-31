@@ -1,0 +1,4 @@
+klee --libc=uclibc --posix-runtime isa_uarch.bc --version
+PID: 18
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2021-08-03 16:54:34

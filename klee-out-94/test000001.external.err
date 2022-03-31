@@ -1,0 +1,7 @@
+Error: failed external call: _ZNSolsEPFRSoS_E
+File: gemm.cpp
+Line: 155
+assembly.ll line: 969
+State: 1
+Stack: 
+	#000000969 in main (=1, =94267053787584) at gemm.cpp:155

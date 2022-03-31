@@ -1,0 +1,13 @@
+Error: memory error: out of bound pointer
+File: gemm_klee.cpp
+Line: 37
+assembly.ll line: 140
+State: 1
+Stack: 
+	#000000140 in _Z14matrixMultiplyPKjS0_ (mat1=94847811928944, mat2=94847811928848) at gemm_klee.cpp:37
+	#100000437 in _Z17micro_decoder_val9INSTR_VAL (instr=94847811189184) at gemm_klee.cpp:85
+	#200001213 in main (argc=1, argv=94847810209824) at gemm_klee.cpp:215
+Info: 
+	address: 94847811814612
+	next: object at 22555669584704 of size 1536
+		MO62[1536] (no allocation info)

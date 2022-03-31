@@ -1,0 +1,3 @@
+KLEE: Using STP solver backend
+KLEE: ERROR: autogen_testharness.cpp:174: ASSERTION FAIL: DRAM_3[k] != DRAM_5[k]
+KLEE: NOTE: now ignoring this error at this location

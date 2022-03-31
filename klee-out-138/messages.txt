@@ -1,0 +1,3 @@
+KLEE: Using STP solver backend
+KLEE: ERROR: gemm.cpp:167: ASSERTION FAIL: acc_stage2[i] == acc_stage1[i]
+KLEE: NOTE: now ignoring this error at this location

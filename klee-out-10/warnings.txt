@@ -1,0 +1,23 @@
+KLEE: WARNING: undefined reference to function: _ZNSolsEPFRSoS_E
+KLEE: WARNING: undefined reference to function: _ZNSolsEi
+KLEE: WARNING: undefined reference to function: _ZNSolsEj
+KLEE: WARNING: undefined reference to function: _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEE6insertEmPKc
+KLEE: WARNING: undefined reference to function: _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEC1Ev
+KLEE: WARNING: undefined reference to function: _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEED1Ev
+KLEE: WARNING: undefined reference to function: _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEaSEPKc
+KLEE: WARNING: undefined reference to function: _ZNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEpLEPKc
+KLEE: WARNING: undefined reference to function: _ZNSt8ios_base4InitC1Ev
+KLEE: WARNING: undefined reference to function: _ZNSt8ios_base4InitD1Ev
+KLEE: WARNING: undefined reference to variable: _ZSt4cout
+KLEE: WARNING: undefined reference to function: _ZSt4endlIcSt11char_traitsIcEERSt13basic_ostreamIT_T0_ES6_
+KLEE: WARNING: undefined reference to function: _ZSt9terminatev
+KLEE: WARNING: undefined reference to function: _ZStlsISt11char_traitsIcEERSt13basic_ostreamIcT_ES5_PKc
+KLEE: WARNING: undefined reference to function: _ZStlsIcSt11char_traitsIcESaIcEERSt13basic_ostreamIT_T0_ES7_RKNSt7__cxx1112basic_stringIS4_S5_T1_EE
+KLEE: WARNING: undefined reference to function: __cxa_begin_catch
+KLEE: WARNING: undefined reference to function: __gxx_personality_v0
+KLEE: WARNING: executable has module level assembly (ignoring)
+KLEE: WARNING ONCE: calling external: _ZNSt8ios_base4InitC1Ev(94161094163000) at /usr/bin/../lib/gcc/x86_64-linux-gnu/7.5.0/../../../../include/c++/7.5.0/iostream:74 25
+KLEE: WARNING ONCE: Alignment of memory from call "realloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling external: syscall(16, 0, 21505, 94161095625584) at klee_src/runtime/POSIX/fd.c:1007 10
+KLEE: WARNING ONCE: Alignment of memory from call "malloc" is not modelled. Using alignment of 8.
+KLEE: WARNING ONCE: calling __klee_posix_wrapped_main with extra arguments.

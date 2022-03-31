@@ -1,0 +1,8 @@
+array insn_addr[4] : w32 -> w8 = symbolic
+array model_version[4] : w32 -> w8 = symbolic
+(query [(Eq 1
+             (ReadLSB w32 0 model_version))
+         (Eq false
+             (Eq 35
+                 (ReadLSB w32 0 insn_addr)))]
+        false)

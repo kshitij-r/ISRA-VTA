@@ -1,0 +1,7 @@
+Error: ASSERTION FAIL: acc_stage2[i] == acc_stage3[i]
+File: gemm.cpp
+Line: 190
+assembly.ll line: 1281
+State: 1
+Stack: 
+	#000001281 in main (argc=1, argv=94909006792320) at gemm.cpp:190

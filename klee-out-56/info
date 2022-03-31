@@ -1,0 +1,23 @@
+klee --libc=uclibc --posix-runtime test_sym.bc --version
+PID: 91744
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2021-07-27 18:50:13
+BEGIN searcher description
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+END searcher description
+Finished: 2021-07-27 18:51:17
+Elapsed: 00:01:04
+KLEE: done: explored paths = 77
+KLEE: done: avg. constructs per query = 367
+KLEE: done: total queries = 3492
+KLEE: done: valid queries = 3414
+KLEE: done: invalid queries = 78
+KLEE: done: query cex = 3492
+
+KLEE: done: total instructions = 4371224
+KLEE: done: completed paths = 38
+KLEE: done: partially completed paths = 39
+KLEE: done: generated tests = 40

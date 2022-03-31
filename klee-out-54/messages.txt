@@ -1,0 +1,5 @@
+KLEE: Using STP solver backend
+KLEE: ERROR: test_sym.cc:169: invalid klee_assume call (provably false)
+KLEE: NOTE: now ignoring this error at this location
+KLEE: ERROR: ./include/etc/ap_private.h:1405: memory error: out of bound pointer
+KLEE: NOTE: now ignoring this error at this location

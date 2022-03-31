@@ -1,0 +1,9 @@
+{
+    "interpreter_names": ["interpreter1", "interpreter2", "interpreter3", "interpreter4"],
+    "test_variables" : ["DRAM", "DRAM_2", "DRAM_3", "DRAM_4", "DRAM_5"],
+    "symbolic_variables" : ["opcode", "x_size", "y_size"],
+    "execution_bound"   : {"opcode":1,"x_size":4,"y_size":1},
+    "assertion" : {"assertion1":["DRAM","DRAM_2"],
+                   "assertion2":["DRAM_2","DRAM_3"],
+                   "assertion3":["DRAM_3","DRAM_4"]}
+}
