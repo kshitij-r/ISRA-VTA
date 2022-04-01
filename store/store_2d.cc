@@ -88,6 +88,7 @@ void interpreter2(ap_uint<79> instr_, uint8_t dram[64], uint8_t out_mem[4][1][16
 
    // Store OUT_MEM values to DRAM array for each uinstr  
     for (int k =0; k < 16; k++){
+
         dram [dram_base_]= out_mem[sram_base_][0][k] ;
 	dram_base_++;
      }
@@ -95,10 +96,10 @@ void interpreter2(ap_uint<79> instr_, uint8_t dram[64], uint8_t out_mem[4][1][16
 
 
 //Takes the input of the core function 
-void interpreter3(int out_mem_base, int dram_base, uint8_t dram[64], uint8_t out_mem[4][1][16] ){
+void interpreter3(int sram_base, int dram_base, uint8_t dram[64], uint8_t out_mem[4][1][16] ){
    // Store OUT_MEM values to DRAM array for each decoded uinstr value
      for (int k =0; k < 16; k++){
-        dram [dram_base]= out_mem[out_mem_base][0][k] ;
+        dram [dram_base]= out_mem[sram_base][0][k] ;
 	dram_base++;
      }
 }
@@ -115,153 +116,126 @@ void interpreter4(int dram_base, uint8_t dram[64], uint8_t dram_2[64] ){
 
 int main(int argc, const char *argv[]) {
 
-unsigned int opcode;
-unsigned int y_size, x_size;
-uint8_t DRAM[64];
-uint8_t DRAM_2[64];
-uint8_t DRAM_3[64];
-uint8_t DRAM_4[64];
-uint8_t DRAM_5[64];
-uint8_t out_mem[4][1][16];
+// unsigned int opcode;
+// unsigned int y_size, x_size;
+// uint8_t DRAM[64];
+// uint8_t DRAM_2[64];
+// uint8_t DRAM_3[64];
+// uint8_t DRAM_4[64];
+// uint8_t DRAM_5[64];
+// opcode =1;
+// x_size = 4;
+// y_size = 1;
+// uint8_t out_mem[4][1][16];
 
-ap_uint<80> uop_q[4];
-unsigned int sram_base_scalar;
-int sram_base ;
-unsigned int dram_base_scalar;
-int dram_base ;
-unsigned int x_stride; 
-ap_uint<10> uop_id[1];
-ap_uint<8> uop_queue[40];
-ap_uint<13> num_uop[1];
-sram_base_scalar = 0;
-dram_base_scalar =0;
-x_stride= 0 ; 
-opcode =1;
-x_size = 4;
-y_size = 1;
-uop_id[0] = 0;
+// ap_uint<80> uop_q[4];
+// ap_uint<10> uop_id[1];
+// ap_uint<8> uop_queue[40];
+// ap_uint<13> num_uop[1];
 
-sram_base  =0 ;
+// unsigned int sram_base_scalar;
+// int sram_base ;
+// unsigned int dram_base_scalar;
+// int dram_base ;
+// unsigned int x_stride; 
 
-dram_base =0;
+// sram_base_scalar = 0;
+// dram_base_scalar =0;
+// x_stride= 0 ; 
 
-for ( int i = 0; i<64; i++) {
-	 DRAM[i] = 0;
-}
+// uop_id[0] = 0;
 
+// sram_base  =0 ;
 
-for ( int i = 0; i<64; i++) {
-	 DRAM_3[i] = 0;
-}
+// dram_base =0;
+
+// for ( int i = 0; i<64; i++) {
+// 	 DRAM[i] = 0;
+// }
 
 
-for ( int i = 0; i<64; i++) {
-	 DRAM_2[i] = 0;
-}
-for ( int i = 0; i<64; i++) {
-	 DRAM_4[i] = 0;
-}
-
-for ( int i = 0; i<64; i++) {
-	 DRAM_5[i] = 0;
-}
+// for ( int i = 0; i<64; i++) {
+// 	 DRAM_3[i] = 0;
+// }
 
 
-int u = 1;
-for (int i = 0; i < x_size; ++i) {
-         for (int j = 0; j < y_size; ++j) {
-                 for (int k = 0; k < 16; ++k) {
-		out_mem[i][j][k] = u;
-		u++;
-                 }
+// for ( int i = 0; i<64; i++) {
+// 	 DRAM_2[i] = 0;
+// }
+// for ( int i = 0; i<64; i++) {
+// 	 DRAM_4[i] = 0;
+// }
+
+// for ( int i = 0; i<64; i++) {
+// 	 DRAM_5[i] = 0;
+// }
+
+
+// int u = 1;
+// for (int i = 0; i < x_size; ++i) {
+//          for (int j = 0; j < y_size; ++j) {
+//                  for (int k = 0; k < 16; ++k) { //k=16 from outmem in source
+// 		out_mem[i][j][k] = u;
+// 		u++;
+//                  }
  
-         }
- }
+//          }
+//  }
 
-for (int i =0; i< 4; i++){
+// for (int i =0; i< 4; i++){
+//   uop_q[i] = 0 ;
+// }
 
-uop_q[i] = 0 ;
-}
+// for (int i =0; i< 40; i++){
+//   uop_queue[i] = 0 ;
+// }
+// num_uop[0] = 0;
 
- for (int i =0; i< 40; i++){
+// opcode = 1;
+// y_size = 1;
+// x_size =4;
 
-uop_queue[i] = 0 ;
-}
-num_uop[0] = 0;
-
-opcode = 1;
-y_size = 1;
-x_size =4;
-
-klee_make_symbolic(&opcode, sizeof(opcode), "opcode");
-klee_make_symbolic(&y_size, sizeof(y_size), "y_size");
-klee_make_symbolic(&x_size, sizeof(x_size), "x_size");
+// klee_make_symbolic(&opcode, sizeof(opcode), "opcode");
+// klee_make_symbolic(&y_size, sizeof(y_size), "y_size");
+// klee_make_symbolic(&x_size, sizeof(x_size), "x_size");
 
 if( (opcode ==1) && (y_size ==1) && (x_size==4) ) {
-instr instruction = { opcode, sram_base_scalar, dram_base_scalar, x_stride,  y_size,x_size };
+    instr instruction = { opcode, sram_base_scalar, dram_base_scalar, x_stride,  y_size,x_size };
 
-interpreter1(instruction, DRAM, out_mem );
-store_decoder(instruction, uop_id, uop_queue, num_uop, uop_q ,  DRAM, out_mem);
+    interpreter1(instruction, DRAM, out_mem );
+    store_decoder(instruction, uop_id, uop_queue, num_uop, uop_q ,  DRAM, out_mem);
 
- while (num_uop[0] > 0) {
-  ap_uint<79> uinstr = uop_q[0]; //assign the first element in uop_q to uinstr
-   if (num_uop[0] > 0) { 
-   for (unsigned int i = 0; i < num_uop[0] -1 ; i++) {
-      uop_q[i] = uop_q[i+1]; // remove the first element in uop_q, shift remaining elements forward and decrease num_ops by 1 
+    while (num_uop[0] > 0) {
+      ap_uint<79> uinstr = uop_q[0]; //assign the first element in uop_q to uinstr
+      if (num_uop[0] > 0) { 
+      for (unsigned int i = 0; i < num_uop[0] -1 ; i++) {
+          uop_q[i] = uop_q[i+1]; // remove the first element in uop_q, shift remaining elements forward and decrease num_ops by 1 
+          }
+          num_uop[0] = num_uop[0] - 1;
       }
-      num_uop[0] = num_uop[0] - 1;
-	}
-	ap_uint<79> uinstruction = uinstr;
-  interpreter2(uinstruction, DRAM_2, out_mem);
-  uinstr_decoder_per_u(uinstruction, sram_base, dram_base);
-  interpreter3(sram_base, dram_base, DRAM_3, out_mem);
-  core(sram_base, dram_base, DRAM_4, out_mem);
-  interpreter4(dram_base, DRAM_4, DRAM_5);
-}
+      ap_uint<79> uinstruction = uinstr;
+      interpreter2(uinstruction, DRAM_2, out_mem);
+      uinstr_decoder_per_u(uinstruction, sram_base, dram_base);
+      interpreter3(sram_base, dram_base, DRAM_3, out_mem);
+      core(sram_base, dram_base, DRAM_4, out_mem);
+      interpreter4(dram_base, DRAM_4, DRAM_5);
+    }
 
-//  #ifdef __GCC__DEF__
-//    for (int i = 0; i < X_SIZE ; i++) {
-//    for (int j = 0; j < Y_SIZE; j++) {
-//    for (int k = 0; k < 16; k++) {
-// 	printf("OUT_MEM[%d][%d][%d] = %u\n", i,j,k, out_mem[i][j][k]);
-//     } }}
-
-// 	printf("\n");
-//    for (int i = 0; i < (x_size * y_size * 16); i++) {
-
-// 	printf("DRAM[%d]= %u\n", i, DRAM[i]);
-//        }
-
-// for (int i = 0; i < (x_size * y_size * 16); i++) {
-
-// 	printf("DRAM_2[%d]= %u\n", i, DRAM_2[i]);
-//        }
-// for (int i = 0; i < (x_size * y_size * 16); i++) {
-
-// 	printf("DRAM_3[%d]= %u\n", i, DRAM_3[i]);
-//        }
-
-// for (int i = 0; i < (x_size * y_size * 16); i++) {
-
-// 	printf("DRAM_5[%d]= %u\n", i, DRAM_4[i]);
-//        }
-// #endif
-
-int k = 0;
-    for (int i = 0; i < X_SIZE; i++) {
-    for (int j = 0; j < Y_SIZE; j++) {
-    for (int m = 0; m < 16; m++) {
-	assert (DRAM[k] == DRAM_2[k]); //Verifying the semantic equivalence of Store instr and microinstructions
+    int k = 0;
+        for (int i = 0; i < X_SIZE; i++) {
+        for (int j = 0; j < Y_SIZE; j++) {
+        for (int m = 0; m < 16; m++) {
+      assert (DRAM[k] == DRAM_2[k]); //Verifying the semantic equivalence of Store instr and microinstructions
 
 
-	assert (DRAM_2[k] == DRAM_3[k]); //Verifying the semantic equivalence of micro-instructions and decoded micro-instructions
+      assert (DRAM_2[k] == DRAM_3[k]); //Verifying the semantic equivalence of micro-instructions and decoded micro-instructions
 
 
-	assert (DRAM_3[k] == DRAM_5[k]); //Verifying the Core unit preserving semantic equivalence  
+      assert (DRAM_3[k] == DRAM_5[k]); //Verifying the Core unit preserving semantic equivalence  
 
-	k++;
-//	printf("assertion passed\n");
-    }  } }
+      k++;
+    //	printf("assertion passed\n");
+        }  } }
 }
 return 0;
 }

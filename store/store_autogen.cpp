@@ -75,10 +75,10 @@ void interpreter2(ap_uint<79> instr_, uint8_t dram[64], uint8_t out_mem[4][1][16
      }
 }
 //Takes the input of the core function 
-void interpreter3(int out_mem_base, int dram_base, uint8_t dram[64], uint8_t out_mem[4][1][16] ){
+void interpreter3(int sram_base, int dram_base, uint8_t dram[64], uint8_t out_mem[4][1][16] ){
    // Store OUT_MEM values to DRAM array for each decoded uinstr value
      for (int k =0; k < 16; k++){
-        dram [dram_base]= out_mem[out_mem_base][0][k] ;
+        dram [dram_base]= out_mem[sram_base][0][k] ;
 	dram_base++;
      }
 }
@@ -90,3 +90,70 @@ void interpreter4(int dram_base, uint8_t dram[64], uint8_t dram_2[64] ){
 	dram_base++;
      }
 }
+
+int main(int argc, const char *argv[]) {
+unsigned int opcode;
+unsigned int x_size;
+unsigned int y_size;
+uint8_t DRAM[64];
+uint8_t DRAM_2[64];
+uint8_t DRAM_3[64];
+uint8_t DRAM_4[64];
+uint8_t DRAM_5[64];
+unsigned int opcode = 0;
+unsigned int sram_base_scalar = 0;
+unsigned int dram_base_scalar = 0;
+unsigned int x_stride = 0;
+unsigned int ysize = 0;
+unsigned int x_size = 0;
+ap_uint<8> uop_queue[40];
+ap_uint<10> uop_id[1];
+ap_uint<13> num_uop[1];
+ap_uint<80> uop_q[4];
+for(int i=0; i<40;i++){
+    uop_queue[i] = 0;
+    }
+for(int i=0; i<1;i++){
+    uop_id[i] = 0;
+    }
+for(int i=0; i<1;i++){
+    num_uop[i] = 0;
+    }
+for(int i=0; i<4;i++){
+    uop_q[i] = 0;
+    }
+
+int sram_base;
+int dram_base;
+uint8_t out_mem[4][1][16];
+
+sram_base = 0;
+dram_base = 0;
+int counter = 1;
+for (int i=0;i<x_size:++i){
+    for (int j=0;j<y_size:++j){
+        for (int k=0;k<16:++k){
+            out_mem[i][j][k] = counter;
+           counter++ ;}}}
+for(int i = 0; i<64; i++) {
+    DRAM[i]= 0;
+    )
+for(int i = 0; i<64; i++) {
+    DRAM_2[i]= 0;
+    )
+for(int i = 0; i<64; i++) {
+    DRAM_3[i]= 0;
+    )
+for(int i = 0; i<64; i++) {
+    DRAM_4[i]= 0;
+    )
+for(int i = 0; i<64; i++) {
+    DRAM_5[i]= 0;
+    )
+opcode = 1;
+x_size = 4;
+y_size = 1;
+klee_make_symbolic(&opcode, sizeof(opcode), "opcode");
+klee_make_symbolic(&x_size, sizeof(x_size), "x_size");
+klee_make_symbolic(&y_size, sizeof(y_size), "y_size");
+if((opcode==1)&&(x_size==4)&&(y_size==1)){
