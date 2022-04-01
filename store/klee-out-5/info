@@ -1,0 +1,23 @@
+klee store_autogen.bc
+PID: 66723
+Using monotonic steady clock with 1/1000000000s resolution
+Started: 2022-04-01 19:55:48
+BEGIN searcher description
+<InterleavedSearcher> containing 2 searchers:
+RandomPathSearcher
+WeightedRandomSearcher::CoveringNew
+</InterleavedSearcher>
+END searcher description
+Finished: 2022-04-01 19:55:57
+Elapsed: 00:00:09
+KLEE: done: explored paths = 4
+KLEE: done: avg. constructs per query = 198
+KLEE: done: total queries = 227
+KLEE: done: valid queries = 223
+KLEE: done: invalid queries = 4
+KLEE: done: query cex = 227
+
+KLEE: done: total instructions = 475599
+KLEE: done: completed paths = 3
+KLEE: done: partially completed paths = 1
+KLEE: done: generated tests = 4

@@ -1,0 +1,9 @@
+while (num_uop[0] > 0) {
+      ap_uint<79> uinstr = uop_q[0]; 
+      if (num_uop[0] > 0) { 
+      for (unsigned int i = 0; i < num_uop[0] -1 ; i++) {
+          uop_q[i] = uop_q[i+1]; 
+          }
+          num_uop[0] = num_uop[0] - 1;
+      }
+      ap_uint<79> uinstruction = uinstr;

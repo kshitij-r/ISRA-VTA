@@ -1,7 +1,8 @@
 {
     "source_files": ["store_struct.h", "store_source.h"],
-    "source_stages" : ["stode_decoder", "uinstr_decoder_per_u", "core"],
+    "source_stages" : ["store_decoder", "uinstr_decoder_per_u", "core"],
     "interpreter_names": ["interpreter1.cpp", "interpreter2.cpp", "interpreter3.cpp", "interpreter4.cpp"],
+    "microinstruction_entry_stage" : [2],
     "test_variables" : ["DRAM", "DRAM_2", "DRAM_3", "DRAM_4", "DRAM_5"],
     "test_variables_type" : ["uint8_t", "uint8_t", "uint8_t", "uint8_t", "uint8_t"],
     "test_variables_init_val" : [0,0,0,0,0],
@@ -14,8 +15,9 @@
     "microinsn_id":["uop_id",1,0,"ap_uint<10>"],
     "microinsn_number_uop":["num_uop",1,0,"ap_uint<13>"],
     "microinsn_top_insn":["uop_q",4,0,"ap_uint<80>"],
-    "instruction":["unsigned int opcode","unsigned int sram_base_scalar","unsigned int dram_base_scalar","unsigned int x_stride","unsigned int ysize","unsigned int x_size"],
-    "assertion" : {"assertion1":["DRAM","DRAM_2"],
+    "instruction":["opcode","sram_base_scalar","dram_base_scalar","x_stride","y_size","x_size"],
+    "instruction_dtype" : ["unsigned int","unsigned int","unsigned int","unsigned int","unsigned int","unsigned int"],
+    "assertion" : {"assertion1":["DRAM","not","DRAM_2"],
                    "assertion2":["DRAM_2","DRAM_3"],
-                   "assertion3":["DRAM_3","DRAM_4"]}
+                   "assertion3":["DRAM_3","DRAM_5"]}
 }

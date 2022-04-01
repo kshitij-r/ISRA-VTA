@@ -1,0 +1,7 @@
+Error: ASSERTION FAIL: DRAM_3[k]!=DRAM_5[k]
+File: store_autogen.cpp
+Line: 174
+assembly.ll line: 7641
+State: 1
+Stack: 
+	#000007641 in main (=1, =94096393463840) at store_autogen.cpp:174

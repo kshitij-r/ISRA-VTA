@@ -6,10 +6,9 @@
 #include<klee/klee.h>
 
 // Include source files
-#include<store_struct.h>
-#include<store_source.h>
+#include "store_struct.h"
+#include "store_source.h"
 //Instantiating all interpreters in the configuration
-//Takes the input of the instruction Decoder
 void interpreter1(struct instr myinsn, uint8_t DRAM[64], uint8_t out_mem[4][1][16] ){
   #ifdef __GCC__DEF__
     try{                
@@ -22,7 +21,7 @@ void interpreter1(struct instr myinsn, uint8_t DRAM[64], uint8_t out_mem[4][1][1
          exit (EXIT_FAILURE);
     }
 #endif
-    // Store OUT_MEM values to DRAM array based on x_size and y_size
+   
 for (int i =0; i<myinsn.x_size; i++){
     for (int j =0; j<myinsn.y_size; j++){
     for (int k =0; k < 16; k++){
@@ -33,7 +32,6 @@ for (int i =0; i<myinsn.x_size; i++){
 	myinsn.sram_base_scalar++ ;
 	 }
  }
-//Takes the input of the micro-instruction decoder
 void interpreter2(ap_uint<79> instr_, uint8_t dram[64], uint8_t out_mem[4][1][16]) {
     int opcode_;
       opcode_x20: for (int x20 = 0; x20 < 1; ++x20) {
@@ -68,23 +66,18 @@ void interpreter2(ap_uint<79> instr_, uint8_t dram[64], uint8_t out_mem[4][1][16
           dram_base_ = ((int)scalar2(47, 16));
         }
       }
-   // Store OUT_MEM values to DRAM array for each uinstr  
     for (int k =0; k < 16; k++){
         dram [dram_base_]= out_mem[sram_base_][0][k] ;
 	dram_base_++;
      }
 }
-//Takes the input of the core function 
 void interpreter3(int sram_base, int dram_base, uint8_t dram[64], uint8_t out_mem[4][1][16] ){
-   // Store OUT_MEM values to DRAM array for each decoded uinstr value
      for (int k =0; k < 16; k++){
         dram [dram_base]= out_mem[sram_base][0][k] ;
 	dram_base++;
      }
 }
-//Takes the output of the core function 
 void interpreter4(int dram_base, uint8_t dram[64], uint8_t dram_2[64] ){
-   // Store the core output 
      for (int k =0; k < 16; k++){
         dram_2 [dram_base]= dram[dram_base] ;
 	dram_base++;
@@ -92,9 +85,6 @@ void interpreter4(int dram_base, uint8_t dram[64], uint8_t dram_2[64] ){
 }
 
 int main(int argc, const char *argv[]) {
-unsigned int opcode;
-unsigned int x_size;
-unsigned int y_size;
 uint8_t DRAM[64];
 uint8_t DRAM_2[64];
 uint8_t DRAM_3[64];
@@ -104,7 +94,7 @@ unsigned int opcode = 0;
 unsigned int sram_base_scalar = 0;
 unsigned int dram_base_scalar = 0;
 unsigned int x_stride = 0;
-unsigned int ysize = 0;
+unsigned int y_size = 0;
 unsigned int x_size = 0;
 ap_uint<8> uop_queue[40];
 ap_uint<10> uop_id[1];
@@ -130,26 +120,26 @@ uint8_t out_mem[4][1][16];
 sram_base = 0;
 dram_base = 0;
 int counter = 1;
-for (int i=0;i<x_size:++i){
-    for (int j=0;j<y_size:++j){
-        for (int k=0;k<16:++k){
+for (int i=0;i<x_size;++i){
+    for (int j=0;j<y_size;++j){
+        for (int k=0;k<16;++k){
             out_mem[i][j][k] = counter;
            counter++ ;}}}
 for(int i = 0; i<64; i++) {
     DRAM[i]= 0;
-    )
+    }
 for(int i = 0; i<64; i++) {
     DRAM_2[i]= 0;
-    )
+    }
 for(int i = 0; i<64; i++) {
     DRAM_3[i]= 0;
-    )
+    }
 for(int i = 0; i<64; i++) {
     DRAM_4[i]= 0;
-    )
+    }
 for(int i = 0; i<64; i++) {
     DRAM_5[i]= 0;
-    )
+    }
 opcode = 1;
 x_size = 4;
 y_size = 1;
@@ -157,3 +147,34 @@ klee_make_symbolic(&opcode, sizeof(opcode), "opcode");
 klee_make_symbolic(&x_size, sizeof(x_size), "x_size");
 klee_make_symbolic(&y_size, sizeof(y_size), "y_size");
 if((opcode==1)&&(x_size==4)&&(y_size==1)){
+instr instruction = { opcode, sram_base_scalar, dram_base_scalar, x_stride, y_size, x_size};
+interpreter1(instruction, DRAM, out_mem);
+store_decoder(instruction, uop_id, uop_queue, num_uop, uop_q, DRAM, out_mem);
+while (num_uop[0] > 0) {
+      ap_uint<79> uinstr = uop_q[0]; 
+      if (num_uop[0] > 0) { 
+      for (unsigned int i = 0; i < num_uop[0] -1 ; i++) {
+          uop_q[i] = uop_q[i+1]; 
+          }
+          num_uop[0] = num_uop[0] - 1;
+      }
+      ap_uint<79> uinstruction = uinstr;
+interpreter2(uinstruction, DRAM_2, out_mem);
+uinstr_decoder_per_u(uinstruction, sram_base, dram_base);
+interpreter3(sram_base, dram_base, DRAM_3, out_mem);
+core(sram_base, dram_base, DRAM_4, out_mem);
+interpreter4(dram_base, DRAM_4, DRAM_5);
+}
+int k = 0;
+for(int i = 0; i < x_size; i++) {
+    for(int j = 0; j < y_size; j++) {
+        for (int m = 0; m < 16; m++) {
+                assert(DRAM[k]!=DRAM_2[k]);
+                assert(DRAM_2[k]==DRAM_3[k]);
+                assert(DRAM_3[k]==DRAM_5[k]);
+k++;
+}
+}
+}
+}return 0;
+}

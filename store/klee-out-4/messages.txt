@@ -1,0 +1,3 @@
+KLEE: Using STP solver backend
+KLEE: ERROR: store_autogen.cpp:173: ASSERTION FAIL: DRAM_2[k]!=DRAM_3[k]
+KLEE: NOTE: now ignoring this error at this location

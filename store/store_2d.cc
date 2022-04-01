@@ -199,8 +199,8 @@ int main(int argc, const char *argv[]) {
 // klee_make_symbolic(&y_size, sizeof(y_size), "y_size");
 // klee_make_symbolic(&x_size, sizeof(x_size), "x_size");
 
-if( (opcode ==1) && (y_size ==1) && (x_size==4) ) {
-    instr instruction = { opcode, sram_base_scalar, dram_base_scalar, x_stride,  y_size,x_size };
+// if( (opcode ==1) && (y_size ==1) && (x_size==4) ) {
+    // instr instruction = { opcode, sram_base_scalar, dram_base_scalar, x_stride,  y_size,x_size };
 
     interpreter1(instruction, DRAM, out_mem );
     store_decoder(instruction, uop_id, uop_queue, num_uop, uop_q ,  DRAM, out_mem);

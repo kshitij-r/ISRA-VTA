@@ -1,0 +1,9 @@
+{
+    "interpreter1": ["instruction", "DRAM", "out_mem"],
+    "store_decoder":["instruction", "uop_id", "uop_queue", "num_uop", "uop_q" ,  "DRAM", "out_mem"],
+    "interpreter2":["uinstruction", "DRAM_2", "out_mem"],
+    "uinstr_decoder_per_u":["uinstruction", "sram_base", "dram_base"],
+    "interpreter3":["sram_base", "dram_base", "DRAM_3", "out_mem"],
+    "core":["sram_base", "dram_base", "DRAM_4", "out_mem"],
+    "interpreter4":["dram_base", "DRAM_4", "DRAM_5"]
+}
