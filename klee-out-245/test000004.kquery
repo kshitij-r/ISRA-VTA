@@ -1,0 +1,11 @@
+array opcode[4] : w32 -> w8 = symbolic
+array x_size[4] : w32 -> w8 = symbolic
+array y_size[4] : w32 -> w8 = symbolic
+(query [(Eq 1
+             (ReadLSB w32 0 opcode))
+         (Eq 1
+             (ReadLSB w32 0 y_size))
+         (Eq false
+             (Eq 4
+                 (ReadLSB w32 0 x_size)))]
+        false)
