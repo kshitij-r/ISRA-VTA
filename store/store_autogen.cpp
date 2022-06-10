@@ -169,7 +169,7 @@ int k = 0;
 for(int i = 0; i < x_size; i++) {
     for(int j = 0; j < y_size; j++) {
         for (int m = 0; m < 16; m++) {
-                assert(DRAM[k]!=DRAM_2[k]);
+                assert(DRAM[k]==DRAM_2[k]);
                 assert(DRAM_2[k]==DRAM_3[k]);
                 assert(DRAM_3[k]==DRAM_5[k]);
 k++;

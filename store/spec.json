@@ -17,7 +17,7 @@
     "microinsn_top_insn":["uop_q",4,0,"ap_uint<80>"],
     "instruction":["opcode","sram_base_scalar","dram_base_scalar","x_stride","y_size","x_size"],
     "instruction_dtype" : ["unsigned int","unsigned int","unsigned int","unsigned int","unsigned int","unsigned int"],
-    "assertion" : {"assertion1":["DRAM","not","DRAM_2"],
+    "assertion" : {"assertion1":["DRAM","DRAM_2"],
                    "assertion2":["DRAM_2","DRAM_3"],
                    "assertion3":["DRAM_3","DRAM_5"]}
 }

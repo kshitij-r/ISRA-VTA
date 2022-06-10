@@ -1,0 +1,7 @@
+Error: ASSERTION FAIL: DRAM[k]!=DRAM_2[k]
+File: store_2d.cpp
+Line: 176
+assembly.ll line: 7593
+State: 1
+Stack: 
+	#000007593 in main (=1, =94768176736288) at store_2d.cpp:176

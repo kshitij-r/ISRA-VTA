@@ -1,0 +1,22 @@
+{
+    "source_files": ["gemm_struct.h", "gemm_source.h"],
+    "source_stages" : ["stode_decoder", "uinstr_decoder_per_u", "core"],
+    "interpreter_names": ["interpreter1_gemm.cpp", "interpreter2_gemm.cpp", "interpreter3_gemm.cpp", "interpreter4_gemm.cpp"],
+    "microinstruction_entry_stage" : [2],
+    "test_variables" : ["DRAM", "DRAM_2", "DRAM_3", "DRAM_4", "DRAM_5"],
+    "test_variables_type" : ["uint8_t", "uint8_t", "uint8_t", "uint8_t", "uint8_t"],
+    "test_variables_init_val" : [0,0,0,0,0],
+    "test_variables_arr_size" : [64,64,64,64,64],
+    "symbolic_variables" : ["opcode", "x_size", "y_size"],
+    "symbolic_variables_datatype" : ["unsigned int", "unsigned int", "unsigned int"],
+    "execution_bound"   : [1,4,1],
+    "function_param":[["int","int",0],["int","wgt_mem",0],["uint8_t","out_mem[4][1][16]"]],
+    "microqueue":["uop_queue",40,0,"ap_uint<8>"],
+    "microinsn_id":["uop_id",1,0,"ap_uint<10>"],
+    "microinsn_number_uop":["num_uop",1,0,"ap_uint<13>"],
+    "microinsn_top_insn":["uop_q",4,0,"ap_uint<80>"],
+    "instruction":["opcode","sram_base_scalar","dram_base_scalar","x_stride","y_size","x_size"],
+    "instruction_dtype" : ["unsigned int","unsigned int","unsigned int","unsigned int","unsigned int","unsigned int"],
+    "assertion" : {"assertion1":["acc_stage3","acc_stage1"],
+                   "assertion2":["acc_stage1","acc_stage3"]}
+}
