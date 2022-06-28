@@ -206,6 +206,7 @@ with open("store_autogen.cpp",'w',encoding = 'utf-8') as file:
         make_symbolic(sym_var[count])
     
     file.write("if((" + sym_var[0] + "==" + str(sym_var_init[0]) + ")&&(" + sym_var[1] + "==" + str(sym_var_init[1]) + ")&&(" +sym_var[2] + "==" + str(sym_var_init[2]) + ")){\n")
+    
     file.write("instr instruction = { ")
     for count in range(len(instr_template)):
         if(count != len(instr_template)-1):
